@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Questika · Design System v0.1</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--p600:#7c4dff;--p700:#5b2fe0;--p300:#b9a2ff;--p100:#e9e1ff;--p50:#f3efff;--ink:#1b1730;--ink2:#2b1a6a;--mut:#7c7899;--hint:#8c88a8;--line:#e6defc;--neu-line:#cfcbd8;--neu-bg:#f4f3f8;--neu-ink:#4b4763;--or1:#ffb04d;--or2:#ff7a0a;--ring:#ff8a1f;--xpbg:#fdf0d6;--xpink:#b9770e;--xpline:#f3dba8;--hp:#ef3f6d;--mp:#4d8bf2;
+--pg:#fbfaff;--pt:#1b1730;--pm:#6f6a8a;--pc:#fff;--pl:#e6defc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pg:#14121f;--pt:#eeebfa;--pm:#a7a2c2;--pc:#1d1a2e;--pl:#34304d}}
+:root[data-theme="dark"]{--pg:#14121f;--pt:#eeebfa;--pm:#a7a2c2;--pc:#1d1a2e;--pl:#34304d}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--pg);color:var(--pt);font-family:'Inter Tight',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.5;font-size:15px}
+.w{max-width:980px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:34px;font-weight:600;letter-spacing:-.6px;line-height:1.15}
+h2{font-size:22px;font-weight:600;letter-spacing:-.3px;margin:56px 0 6px}
+h3{font-size:14px;font-weight:600;margin:22px 0 8px;color:var(--pm);text-transform:uppercase;letter-spacing:.6px}
+p,li{color:var(--pm)}p.lead{font-size:16px;margin-top:10px;max-width:680px}
+ul{padding-left:20px}
+.tag{display:inline-block;font-size:12px;font-weight:500;padding:2px 10px;border-radius:12px;background:var(--p50);color:var(--p700);margin-bottom:14px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.sw{background:var(--pc);border:1px solid var(--pl);border-radius:16px;overflow:hidden}
+.sw i{display:block;height:64px}.sw div{padding:10px 12px;font-size:13px}.sw b{display:block;font-weight:600;color:var(--pt)}.sw span{color:var(--pm)}
+.box{background:var(--pc);border:1px solid var(--pl);border-radius:20px;padding:20px}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{text-align:left;padding:10px 8px;border-bottom:1px solid var(--pl);vertical-align:top;color:var(--pm)}th{color:var(--pt);font-weight:600}
+td:first-child{color:var(--pt);font-weight:500;white-space:nowrap}
+.demo{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+.col{display:flex;flex-direction:column;gap:8px;width:340px;max-width:100%}
+.cap{font-size:12px;color:var(--pm);margin-top:4px}
+/* components */
+.row{display:flex;align-items:center;gap:12px;height:46px;padding:0 12px;border-radius:18px;background:var(--p50);border:1px solid var(--line);color:var(--ink2)}
+.row.h{height:54px}
+.row.now{background:#fff;border:2px solid var(--p600);box-shadow:0 6px 18px rgba(124,77,255,.22)}
+.row.done{background:#f7f6fa;border-color:#ebe8f3;color:#a29fb8}.row.done .t{text-decoration:line-through}
+.ck{flex:none;width:26px;height:26px;border-radius:50%;border:2.5px solid var(--p300);background:#fff}
+.row.now .ck{border-color:var(--p600)}.row.done .ck{border:0;background:linear-gradient(var(--or1),var(--or2));display:flex;align-items:center;justify-content:center}
+.b{flex:1;min-width:0}.t{font-size:14px;font-weight:500;line-height:17px;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sub{display:flex;align-items:center;gap:4px;font-size:11px;line-height:13px;color:var(--hint)}.sub svg{color:var(--p600)}
+.xp{font-size:11px;font-weight:600;padding:4px 10px;border-radius:12px;background:var(--xpbg);color:var(--xpink);border:1px solid var(--xpline);white-space:nowrap}
+.tg{display:inline-block;height:22px;line-height:20px;padding:0 9px;border:1px solid var(--neu-line);border-radius:8px;font-size:11px;color:var(--mut);background:#fff}
+.tl{position:relative;padding-left:50px;display:flex;flex-direction:column;gap:8px}
+.tl:before{content:"";position:absolute;left:39px;top:23px;bottom:23px;width:2px;background:repeating-linear-gradient(#cfc7ea 0 5px,transparent 5px 10px)}
+.tl .row{position:relative}.tl .tm{position:absolute;left:-50px;width:30px;text-align:right;font-size:10px;color:var(--hint)}
+.tl .d{position:absolute;left:-16px;width:10px;height:10px;border-radius:50%;border:2px solid #cfc7ea;background:#fff}
+.tl .now .d{background:var(--p600);border:0;left:-17px}.tl .now .tm{color:var(--p700);font-weight:600}
+.bgp{background:linear-gradient(180deg,#b172ff,#8446f2 45%,#5d26cc 80%,#4a1db0);border-radius:24px;padding:22px 16px}
+.card{position:relative;width:326px;max-width:100%;height:148px;background:#fff;border-radius:28px;padding:14px 16px;color:var(--ink);box-shadow:0 8px 22px rgba(40,10,110,.3)}
+.card .top{display:flex;align-items:center;gap:8px}
+.ball{width:28px;height:28px;border-radius:50%;border:2.5px solid rgba(27,23,48,.3);flex:none}
+.chip{font-size:11px;padding:4px 10px;border-radius:12px;background:#f4f2fb;border:1px solid #e4dff5;white-space:nowrap}
+.dur{font-size:12px;color:var(--mut)}.card .xp{margin-left:auto}
+.card h4{font-size:20px;font-weight:300;line-height:24px;margin-top:8px;letter-spacing:-.2px}
+.card p{font-size:12px;line-height:15px;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .sub{position:absolute;left:16px;bottom:12px;height:22px;font-size:12px;color:var(--mut)}.card .tg{position:absolute;right:16px;bottom:12px}
+.seg{display:flex;align-items:center;gap:8px;height:28px;padding:0 10px;border-radius:14px;background:rgba(48,14,125,.42);border:1px solid rgba(255,255,255,.22);color:#fff;font-size:10.5px;font-weight:600;width:100%}
+.seg div{flex:1;display:flex;gap:3px}.seg i{flex:1;height:8px;border-radius:4px;background:rgba(255,255,255,.2)}.seg i.on{background:linear-gradient(#ffd34d,#ffa21a);box-shadow:0 0 8px rgba(255,190,60,.45)}
+.tile{height:60px;width:93px;border-radius:18px;background:rgba(48,14,125,.38);border:1px solid rgba(255,255,255,.18);padding:9px 11px;color:#fff;display:flex;flex-direction:column;justify-content:space-between}.tile em{font-style:normal;font-size:10px;color:rgba(255,255,255,.8)}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:36px;width:44px;border-radius:18px;border:1px solid #e6e3ee;background:var(--neu-bg);color:var(--neu-ink)}
+.btn.sq{height:40px;width:40px;border-radius:13px;background:var(--p50);border-color:#e4dcff}
+.fab{width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 35% 25%,#c9aaff,var(--p600) 58%,#4a1fd0);box-shadow:0 10px 28px rgba(124,77,255,.5);display:flex;align-items:center;justify-content:center}
+.ava{width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px #e4dff5,0 8px 24px rgba(124,77,255,.25);position:relative;display:flex;align-items:center;justify-content:center}
+.ava:before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--ring) 0 40%,#e6e0fb 0)}.ava:after{content:"";position:absolute;inset:5px;border-radius:50%;background:#ddd6f7}
+.hb{position:relative;height:11px;width:116px;border-radius:6px;overflow:hidden;background:rgba(239,63,109,.3)}.hb i{position:absolute;inset:0 44% 0 0;background:linear-gradient(#ff8aa8,var(--hp))}.hb.m{background:rgba(77,139,242,.3);margin-top:3px}.hb.m i{inset:0;background:linear-gradient(#8dbcff,var(--mp))}
+pre{background:#1d1a2e;color:#e8e4fb;border-radius:16px;padding:16px;font-size:12.5px;line-height:1.55;overflow:auto;max-height:380px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.cp{float:right;margin:-4px 0 0 8px;font:500 12px 'Inter Tight',system-ui;border:1px solid var(--pl);background:var(--pc);color:var(--pt);border-radius:10px;padding:4px 10px;cursor:pointer}
+.chk li{margin:4px 0}
+@media(max-width:560px){h1{font-size:28px}.w{padding:28px 16px 60px}}
+</style>
+</head>
+<body>
+<div class="w">
+<span class="tag">Questika · v0.1 · экран «Сегодня», вариант 9</span>
+<h1>Дизайн-система главного экрана</h1>
+<p class="lead">Единый источник правды для дизайнеров, которые делают остальные экраны. Здесь токены, компоненты с состояниями, правила поведения и чек-лист. Работает в любом инструменте: Penpot, Figma Free, Sketch, Affinity или сразу в коде.</p>
+
+<h2>Как пользоваться</h2>
+<ul><li>Берите цвета, размеры и радиусы только из этой страницы. Новые значения не вводим без согласования.</li><li>Токены в конце страницы скопируйте как CSS или как JSON (формат W3C Design Tokens, подходит для импорта в Penpot и Tokens Studio).</li><li>Базовый размер макета 430 × 932. Сетка 4/8, боковые поля 16.</li><li>Поведение (шторка, лента, выполнение задач) смотрите в живом прототипе, а здесь только правила.</li></ul>
+
+<h2>Принципы</h2>
+<ul><li><b>Сверху мир, снизу дела.</b> Фото героя занимает верх экрана, задачи живут в белой нижней шторке.</li><li><b>Фиолетовый — действие, оранжевый — награда.</b> Оранжевый только для прогресса, колец и галочек выполнения.</li><li><b>Один акцент на блок.</b> Нейтральные теги и серые подсказки, цветное только главное.</li><li><b>Подсказки вместо текста.</b> Подзадачи, теги и время выводим мелкими метками, а не абзацами.</li></ul>
+
+<h2>Цвет</h2>
+<div class="grid">
+<div class="sw"><i style="background:#7c4dff"></i><div><b>Primary 600</b><span>#7C4DFF · действия, текущая задача</span></div></div>
+<div class="sw"><i style="background:#5b2fe0"></i><div><b>Primary 700</b><span>#5B2FE0 · акцентный текст, тени</span></div></div>
+<div class="sw"><i style="background:#b9a2ff"></i><div><b>Primary 300</b><span>#B9A2FF · обводки чекбоксов</span></div></div>
+<div class="sw"><i style="background:#e9e1ff"></i><div><b>Primary 100</b><span>#E9E1FF · фоны выбранного</span></div></div>
+<div class="sw"><i style="background:#f3efff"></i><div><b>Primary 50</b><span>#F3EFFF · строки списка</span></div></div>
+<div class="sw"><i style="background:linear-gradient(#ffb04d,#ff7a0a)"></i><div><b>Orange</b><span>#FFB04D → #FF7A0A · выполнение</span></div></div>
+<div class="sw"><i style="background:#ff8a1f"></i><div><b>Ring</b><span>#FF8A1F · кольцо опыта</span></div></div>
+<div class="sw"><i style="background:#fdf0d6"></i><div><b>XP</b><span>фон #FDF0D6, текст #B9770E</span></div></div>
+<div class="sw"><i style="background:#ef3f6d"></i><div><b>Health</b><span>#EF3F6D · жизнь</span></div></div>
+<div class="sw"><i style="background:#4d8bf2"></i><div><b>Mana</b><span>#4D8BF2 · мана</span></div></div>
+<div class="sw"><i style="background:#1b1730"></i><div><b>Ink</b><span>#1B1730 · заголовки, #2B1A6A · строки</span></div></div>
+<div class="sw"><i style="background:#7c7899"></i><div><b>Muted</b><span>#7C7899 / #8C88A8 · подсказки</span></div></div>
+<div class="sw"><i style="background:linear-gradient(180deg,#b172ff,#8446f2 45%,#5d26cc 80%,#4a1db0)"></i><div><b>Фон экрана</b><span>#B172FF → #8446F2 → #5D26CC → #4A1DB0</span></div></div>
+<div class="sw"><i style="background:#f4f3f8;border-bottom:1px solid #cfcbd8"></i><div><b>Neutral</b><span>фон #F4F3F8, обводка #CFCBD8, текст #4B4763</span></div></div>
+</div>
+
+<h2>Типографика</h2>
+<p>Шрифт Inter Tight (Google Fonts), русская и латинская гарнитура одна.</p>
+<div class="box" style="margin-top:12px"><table>
+<tr><th>Роль</th><th>Размер / интерлиньяж</th><th>Начертание</th></tr>
+<tr><td>Заголовок шторки</td><td>24 / 28, −0.3</td><td>Bold 700 · «Чт, 12 ноября»</td></tr>
+<tr><td>Заголовок карточки</td><td>20 / 24, −0.2</td><td>Light 300</td></tr>
+<tr><td>Название задачи в списке</td><td>14 / 17</td><td>Medium 500</td></tr>
+<tr><td>Описание, длительность</td><td>12 / 15</td><td>Regular 400, до 2 строк</td></tr>
+<tr><td>Метки, чипы, XP</td><td>11 / 13</td><td>Medium 500–600</td></tr>
+<tr><td>Время на таймлайне</td><td>10</td><td>Medium 500, у текущей Semibold</td></tr>
+<tr><td>Цифры в плашках статистики</td><td>точечная матрица 5×7</td><td>клетка 2.6px, только 0–9, «/» и «+»</td></tr>
+</table></div>
+
+<h2>Отступы, радиусы, тени</h2>
+<div class="box"><table>
+<tr><td>Сетка</td><td>4 / 8, боковые поля экрана 16, зазор между строками 8, между карточками 12</td></tr>
+<tr><td>Радиусы</td><td>шторка и карточки 28 · строки и плашки 18 · кнопки 13–18 · чипы 12 · теги 8</td></tr>
+<tr><td>Тень карточки</td><td>0 8 22 rgba(40,10,110,.30)</td></tr>
+<tr><td>Тень строки</td><td>0 2 6 rgba(124,77,255,.08) · текущая 0 6 18 rgba(124,77,255,.22)</td></tr>
+<tr><td>Нижняя панель</td><td>высота 64, ширина 318, радиус 32, тень 0 10 30 rgba(80,60,160,.16)</td></tr>
+<tr><td>Размеры контролов</td><td>чекбокс 26 · аватар 64 · плюс 48 · кнопка-стрелка 44×36 · плашка статистики 93×60</td></tr>
+</table></div>
+
+<h2>Компоненты</h2>
+<h3>Строка задачи</h3>
+<div class="demo"><div class="col">
+<div class="row now"><span class="ck"></span><div class="b"><div class="t">Собрать слайды к встрече</div><div class="sub"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h3M4 12h3M4 18h3M11 6h9M11 12h9M11 18h9"/></svg>3 подзадачи</div></div><span class="xp">+20 XP</span></div><div class="cap">Текущая: белая, рамка Primary 600 2px, подзадачи мелкой строкой</div>
+<div class="row"><span class="ck"></span><div class="b"><div class="t">Обед без экрана</div></div><span class="xp">+10 XP</span></div><div class="cap">Обычная: Primary 50, высота 46</div>
+<div class="row done"><span class="ck"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="b"><div class="t">Зарядка и стакан воды</div></div></div><div class="cap">Выполненная: серая, оранжевая галочка. В списке такие не показываем, они уходят после отметки</div>
+</div>
+<div class="col"><div class="tl">
+<div class="row"><span class="tm">12:00</span><span class="d"></span><span class="ck"></span><div class="b"><div class="t">Обед без экрана</div></div><span class="xp">+10 XP</span></div>
+<div class="row now"><span class="tm">10:30</span><span class="d"></span><span class="ck"></span><div class="b"><div class="t">Собрать слайды</div></div><span class="xp">+20 XP</span></div>
+<div class="row"><span class="tm">14:00</span><span class="d"></span><span class="ck"></span><div class="b"><div class="t">Созвон с командой</div></div><span class="xp">+15 XP</span></div></div>
+<div class="cap">Таймлайн сбоку: колонка 50px, время 10px справа от края, точка 10px строго по оси пунктира, текущая — Primary 600</div></div></div>
+
+<h3>Карточка в горизонтальной ленте</h3>
+<div class="demo"><div class="bgp"><div class="card"><div class="top"><span class="ball"></span><span class="chip">Сейчас · 10:30</span><span class="dur">25 мин</span><span class="xp">+20 XP</span></div><h4>Собрать слайды к встрече</h4><p>Подготовить 8 слайдов для созвона и отправить файл команде до 12:00</p><div class="sub"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h3M4 12h3M4 18h3M11 6h9M11 12h9M11 18h9"/></svg>3 подзадачи</div><span class="tg">Работа</span></div></div>
+<div class="col"><ul><li>Ширина 326, высота 148, шаг ленты 338, прокрутка с привязкой.</li><li>В ленте не больше 4 невыполненных задач, под лентой пагинация: расстояние до карточки и до следующего блока одинаковое (13).</li><li>Шарик слева закрывает задачу, никакого текста «Готово».</li><li>Описание не длиннее 2 строк, подзадачи слева внизу, тег категории справа внизу.</li></ul></div></div>
+
+<h3>Прогресс, статистика, кнопки</h3>
+<div class="demo"><div class="bgp" style="width:380px;max-width:100%;display:flex;flex-direction:column;gap:14px"><div class="seg">1/7<div><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><svg viewBox="0 0 36 30" width="26" height="22"><rect x="3" y="12" width="30" height="15" rx="4" fill="#a85f22"/><path d="M3 14V11Q3 3 12 3H24Q33 3 33 11V14Z" fill="#d98a3d"/><rect x="14.5" y="3" width="7" height="24" rx="1.5" fill="#ffd34d"/><rect x="14" y="14" width="8" height="8" rx="2" fill="#ffe27a"/></svg></div>
+<div style="display:flex;gap:8px"><div class="tile"><b id="n1"></b><em>Задачи</em></div><div class="tile"><b id="n2"></b><em>Привычки</em></div><div class="tile"><b id="n3"></b><em>Фокус, мин</em></div><div class="tile"><b id="n4"></b><em>Просрочено</em></div></div>
+<div><div class="hb"><i></i></div><div class="hb m"><i></i></div></div></div>
+<div class="col"><div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap"><span class="btn"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#4b4763" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span><span class="btn sq"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#2b1a6a" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span><span class="fab"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><span class="ava"></span></div>
+<ul><li>Прогресс: сегментов столько, сколько задач на день. Когда все закрыты, сундук светится.</li><li>Кнопка со стрелкой раскрывает шторку, крестик сворачивает.</li><li>Аватар 64 с оранжевым кольцом опыта, плюс 48 над ним по центру.</li><li>Health и Mana вместе не выше плашки валют (29), по 11 каждая.</li></ul></div></div>
+
+<h2>Поведение</h2>
+<div class="box"><table>
+<tr><td>Нижняя шторка</td><td>свёрнута (верх на 620) и полный экран (верх 0). Тянется за ручку и заголовок. Сдвиг больше 50px переключает состояние, меньше возвращает назад. Тап по ручке переключает.</td></tr>
+<tr><td>Полный экран</td><td>шапка скрыта, сверху отступ 46 под статус-бар, справа появляется крестик.</td></tr>
+<tr><td>Выполнение задачи</td><td>строка исчезает из списка, карточка в ленте заменяется следующей, обновляются счётчик, сегменты прогресса и сундук.</td></tr>
+<tr><td>Заголовок шторки</td><td>жирная дата «Чт, 12 ноября», справа нейтральная кнопка со стрелкой.</td></tr>
+<tr><td>Пустые состояния</td><td>все задачи закрыты: «Всё сделано ✨», сундук светится.</td></tr>
+</table></div>
+
+<h2>Чек-лист нового экрана</h2>
+<ul class="chk"><li>Цвета, шрифт, радиусы и тени только из токенов.</li><li>Есть фото или иллюстрация сверху, либо сознательно нет, но тогда фон экрана из градиента.</li><li>Один основной фиолетовый акцент, оранжевый только для награды.</li><li>Все состояния компонентов нарисованы: обычное, текущее, выполненное, пустое, загрузка, ошибка.</li><li>Нижняя панель и аватар с кольцом на месте и не перекрывают контент (отступ 150 снизу у списков).</li><li>Тексты на русском, без длинных абзацев, метки короткие.</li></ul>
+
+<h2>Токены</h2>
+<h3>CSS <button class="cp" data-c="css">Копировать</button></h3>
+<pre id="css">:root{
+  --q-primary-600:#7c4dff; --q-primary-700:#5b2fe0; --q-primary-300:#b9a2ff;
+  --q-primary-100:#e9e1ff; --q-primary-50:#f3efff;
+  --q-orange-1:#ffb04d; --q-orange-2:#ff7a0a; --q-ring:#ff8a1f;
+  --q-xp-bg:#fdf0d6; --q-xp-ink:#b9770e; --q-xp-line:#f3dba8;
+  --q-health:#ef3f6d; --q-mana:#4d8bf2;
+  --q-ink:#1b1730; --q-ink-row:#2b1a6a; --q-muted:#7c7899; --q-hint:#8c88a8;
+  --q-line:#e6defc; --q-neutral-bg:#f4f3f8; --q-neutral-line:#cfcbd8; --q-neutral-ink:#4b4763;
+  --q-bg-1:#b172ff; --q-bg-2:#8446f2; --q-bg-3:#5d26cc; --q-bg-4:#4a1db0;
+  --q-font:'Inter Tight',system-ui,sans-serif;
+  --q-radius-sheet:28px; --q-radius-card:28px; --q-radius-row:18px; --q-radius-chip:12px; --q-radius-tag:8px;
+  --q-space-1:4px; --q-space-2:8px; --q-space-3:12px; --q-space-4:16px;
+  --q-shadow-card:0 8px 22px rgba(40,10,110,.3);
+  --q-shadow-row:0 2px 6px rgba(124,77,255,.08);
+  --q-shadow-now:0 6px 18px rgba(124,77,255,.22);
+}</pre>
+<h3>JSON (W3C Design Tokens) <button class="cp" data-c="json">Копировать</button></h3>
+<pre id="json">{
+  "color": {
+    "primary": {
+      "600": {"$type":"color","$value":"#7c4dff"},
+      "700": {"$type":"color","$value":"#5b2fe0"},
+      "300": {"$type":"color","$value":"#b9a2ff"},
+      "100": {"$type":"color","$value":"#e9e1ff"},
+      "50":  {"$type":"color","$value":"#f3efff"}
+    },
+    "orange": {"1":{"$type":"color","$value":"#ffb04d"},"2":{"$type":"color","$value":"#ff7a0a"},"ring":{"$type":"color","$value":"#ff8a1f"}},
+    "xp": {"bg":{"$type":"color","$value":"#fdf0d6"},"ink":{"$type":"color","$value":"#b9770e"},"line":{"$type":"color","$value":"#f3dba8"}},
+    "stat": {"health":{"$type":"color","$value":"#ef3f6d"},"mana":{"$type":"color","$value":"#4d8bf2"}},
+    "text": {"ink":{"$type":"color","$value":"#1b1730"},"row":{"$type":"color","$value":"#2b1a6a"},"muted":{"$type":"color","$value":"#7c7899"},"hint":{"$type":"color","$value":"#8c88a8"}},
+    "neutral": {"bg":{"$type":"color","$value":"#f4f3f8"},"line":{"$type":"color","$value":"#cfcbd8"},"ink":{"$type":"color","$value":"#4b4763"}}
+  },
+  "radius": {"sheet":{"$type":"dimension","$value":"28px"},"card":{"$type":"dimension","$value":"28px"},"row":{"$type":"dimension","$value":"18px"},"chip":{"$type":"dimension","$value":"12px"},"tag":{"$type":"dimension","$value":"8px"}},
+  "space": {"1":{"$type":"dimension","$value":"4px"},"2":{"$type":"dimension","$value":"8px"},"3":{"$type":"dimension","$value":"12px"},"4":{"$type":"dimension","$value":"16px"}},
+  "font": {"family":{"$type":"fontFamily","$value":"Inter Tight"}}
+}</pre>
+<p style="margin-top:28px;font-size:13px">Версия 0.1. Любые правки токенов и компонентов вносим здесь и отмечаем в номере версии.</p>
+</div>
+<script>
+(function(){
+var G={'0':['01110','10001','10011','10101','11001','10001','01110'],'1':['00100','01100','00100','00100','00100','00100','01110'],'2':['01110','10001','00001','00010','00100','01000','11111'],'4':['00010','00110','01010','10010','11111','00010','00010'],'5':['11111','10000','11110','00001','00001','10001','01110'],'7':['11111','00001','00010','00100','01000','01000','01000'],'/':['00001','00010','00010','00100','01000','01000','10000']};
+function dm(t,c){var x=0,o='';for(var i=0;i<t.length;i++){var g=G[t[i]];if(!g)continue;for(var r=0;r<7;r++)for(var q=0;q<5;q++){var on=g[r][q]==='1';o+='<rect x="'+((x+q)*c+c*.1)+'" y="'+(r*c+c*.1)+'" width="'+c*.8+'" height="'+c*.8+'" rx="'+c*.16+'" fill="'+(on?'#fff':'rgba(255,255,255,.08)')+'"/>'}x+=6}
+return '<svg width="'+((x-1)*c)+'" height="'+(7*c)+'">'+o+'</svg>'}
+[['n1','1/7'],['n2','2/4'],['n3','50'],['n4','0']].forEach(function(a){var e=document.getElementById(a[0]);if(e)e.innerHTML=dm(a[1],2.6)});
+document.querySelectorAll('.cp').forEach(function(b){b.addEventListener('click',function(){var t=document.getElementById(b.getAttribute('data-c')).textContent;try{navigator.clipboard.writeText(t).then(function(){b.textContent='Скопировано'})}catch(e){}setTimeout(function(){b.textContent='Копировать'},1500)})});
+})();
+</script>
+</body>
+</html>

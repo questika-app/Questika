@@ -1,0 +1,16 @@
+:root{
+  --q-primary-600:#7c4dff; --q-primary-700:#5b2fe0; --q-primary-300:#b9a2ff;
+  --q-primary-100:#e9e1ff; --q-primary-50:#f3efff;
+  --q-orange-1:#ffb04d; --q-orange-2:#ff7a0a; --q-ring:#ff8a1f;
+  --q-xp-bg:#fdf0d6; --q-xp-ink:#b9770e; --q-xp-line:#f3dba8;
+  --q-health:#ef3f6d; --q-mana:#4d8bf2;
+  --q-ink:#1b1730; --q-ink-row:#2b1a6a; --q-muted:#7c7899; --q-hint:#8c88a8;
+  --q-line:#e6defc; --q-neutral-bg:#f4f3f8; --q-neutral-line:#cfcbd8; --q-neutral-ink:#4b4763;
+  --q-bg-1:#b172ff; --q-bg-2:#8446f2; --q-bg-3:#5d26cc; --q-bg-4:#4a1db0;
+  --q-font:'Inter Tight',system-ui,sans-serif;
+  --q-radius-sheet:28px; --q-radius-card:28px; --q-radius-row:18px; --q-radius-chip:12px; --q-radius-tag:8px;
+  --q-space-1:4px; --q-space-2:8px; --q-space-3:12px; --q-space-4:16px;
+  --q-shadow-card:0 8px 22px rgba(40,10,110,.3);
+  --q-shadow-row:0 2px 6px rgba(124,77,255,.08);
+  --q-shadow-now:0 6px 18px rgba(124,77,255,.22);
+}
