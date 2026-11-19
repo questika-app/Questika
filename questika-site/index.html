@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Questika — запишитесь в бета-тестеры</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--q-primary-600:#7c4dff;--q-primary-700:#5b2fe0;--q-primary-300:#b9a2ff;--q-primary-100:#e9e1ff;--q-primary-50:#f3efff;--q-ink:#1b1730;--q-neutral-ink:#4b4763;--q-neutral-line:#cfcbd8;--q-health:#ef3f6d;
+--q-shadow-now:0 6px 18px rgba(124,77,255,.22);--q-font:'Inter Tight',system-ui,sans-serif;--hh:72px;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;background:var(--q-primary-50);color:var(--q-ink);font:400 17px/1.55 var(--q-font);overflow-x:hidden}
+.top{height:var(--hh);display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 max(5vw,28px)}
+.logo{display:flex;align-items:center;gap:10px;font:700 22px var(--q-font);letter-spacing:-.02em;color:var(--q-ink);text-decoration:none}
+.mark{width:30px;height:30px;border-radius:10px;background:var(--q-primary-600);display:grid;place-items:center}
+.mark:after{content:"";width:10px;height:10px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.nav{display:flex;gap:32px;margin-left:auto}
+.nav a{color:var(--q-neutral-ink);text-decoration:none;font:500 15px var(--q-font);transition:color .15s}
+.nav a:hover{color:var(--q-primary-600)}
+.cta{height:40px;padding:0 18px;display:inline-flex;align-items:center;border-radius:13px;background:var(--q-primary-100);color:var(--q-primary-700);font:600 15px var(--q-font);text-decoration:none;transition:background .15s}
+.cta:hover{background:var(--q-primary-300)}
+.cta:focus-visible,.nav a:focus-visible,.logo:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3px;border-radius:8px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:stretch;min-height:calc(100vh - var(--hh))}
+.copy{align-self:center;padding:30px 3vw 60px max(5vw,28px)}
+h1{font:700 clamp(64px,9.5vw,152px)/.95 var(--q-font);letter-spacing:-.035em;margin:0 0 26px}
+.lead{color:var(--q-neutral-ink);max-width:30em;margin:0 0 34px;font-size:18px}
+form{display:flex;gap:10px;max-width:500px;flex-wrap:wrap}
+input[type=email]{flex:1 1 220px;min-width:0;height:56px;padding:0 20px;border-radius:18px;border:1.5px solid var(--q-neutral-line);background:#fff;color:var(--q-ink);font:500 16px var(--q-font);outline:none;transition:border-color .2s,box-shadow .2s}
+input[type=email]::placeholder{color:#8c88a8}
+input[type=email]:focus-visible{border-color:var(--q-primary-600);box-shadow:0 0 0 4px rgba(124,77,255,.2)}
+button.go{height:56px;padding:0 26px;border:0;border-radius:16px;background:var(--q-primary-600);color:#fff;font:600 16px var(--q-font);cursor:pointer;transition:transform .15s,background .15s;box-shadow:var(--q-shadow-now)}
+button.go:hover{background:var(--q-primary-700);transform:translateY(-2px)}
+button.go:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3px}
+.msg{min-height:22px;margin:12px 0 0;font-size:15px;color:var(--q-neutral-ink)}
+.msg.err{color:var(--q-health);font-weight:600}.msg.ok{color:var(--q-primary-700);font-weight:600}
+.perks{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;color:var(--q-neutral-ink);font-size:15px}
+.perks li{padding-left:22px;position:relative}
+.perks li:before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:3px;background:var(--q-primary-600);transform:rotate(45deg)}
+.stage{position:relative;min-height:560px;border-radius:28px 0 0 28px;overflow:hidden;background:#7fb6ee url(assets/bg.jpg) center/cover no-repeat}
+.stage canvas{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:pan-y}
+.drop{position:absolute;z-index:2;right:20px;bottom:20px;font:500 13px var(--q-font);color:var(--q-neutral-ink);background:#ffffffd9;border:1px dashed var(--q-neutral-line);border-radius:12px;padding:9px 14px;cursor:pointer}
+.drop:hover{border-color:var(--q-primary-600);color:var(--q-ink)}
+.drop input{display:none}
+@media (max-width:900px){.nav{display:none}.hero{grid-template-columns:1fr}.stage{height:70vh;min-height:420px;border-radius:28px}}
+@media (prefers-reduced-motion:reduce){button.go,.cta,.nav a{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#"><span class="mark"></span>Questika</a>
+  <nav class="nav" aria-label="Разделы"><a href="#">Возможности</a><a href="#">Квесты и миссии</a><a href="#">Команда</a></nav>
+  <a class="cta" href="#em">Регистрация на Beta</a>
+</header>
+<main class="hero">
+  <section class="copy">
+    <h1>Questika</h1>
+    <p class="lead">Questika — таск-менеджер, где задачи становятся квестами, а прогресс — наградами. Выполняй цели, побеждай боссов и расти вместе с командой.</p>
+    <form id="f" novalidate>
+      <input id="em" type="email" placeholder="Ваш email" autocomplete="email" aria-label="Email" required>
+      <button class="go" type="submit">Регистрация на Beta</button>
+    </form>
+    <p class="msg" id="msg" role="status"></p>
+    <ul class="perks">
+      <li>Квесты и миссии с боссами</li>
+      <li>Питомцы и экипировка для персонажа</li>
+      <li>Лиги и общий рейтинг команды</li>
+    </ul>
+  </section>
+  <section class="stage" id="stage" aria-label="3D-персонаж Questika">
+    <label class="drop" id="drop">Перетащите .glb сюда, чтобы примерить своего персонажа<input id="file" type="file" accept=".glb,.gltf"></label>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script>
+(function(){
+  // ---------- form ----------
+  var f=document.getElementById('f'),em=document.getElementById('em'),msg=document.getElementById('msg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=em.value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){msg.className='msg err';msg.textContent='Проверьте email: похоже, в адресе есть ошибка.';em.focus();return;}
+    msg.className='msg ok';msg.textContent='Вы в списке бета-тестеров. Напишем на '+v+'.';
+    f.querySelector('button').textContent='Записали';em.disabled=true;
+  });
+
+  document.querySelector('.cta').addEventListener('click',function(e){e.preventDefault();em.scrollIntoView({block:'center',behavior:'smooth'});em.focus({preventScroll:true});});
+  // ---------- 3D stage ----------
+  var stage=document.getElementById('stage'),renderer;
+  try{renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});}
+  catch(err){stage.insertAdjacentHTML('afterbegin','<p style="padding:40px;color:var(--mut)">3D недоступно в этом браузере.</p>');return;}
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+  renderer.outputEncoding=THREE.sRGBEncoding;
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=0.9;
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  stage.insertBefore(renderer.domElement,stage.firstChild);
+
+  var scene=new THREE.Scene();
+  var cam=new THREE.PerspectiveCamera(32,1,0.1,60);
+
+  scene.add(new THREE.HemisphereLight(0xeef3ea,0x3a4a44,1.2));
+  var key=new THREE.DirectionalLight(0xfff4e6,0.5);key.position.set(3,6,5);key.castShadow=true;
+  key.shadow.mapSize.set(1024,1024);key.shadow.camera.left=-3;key.shadow.camera.right=3;key.shadow.camera.top=4;key.shadow.camera.bottom=-2;key.shadow.radius=12;
+  scene.add(key);
+  var rimO=new THREE.PointLight(0xff9a5a,0.5,12);rimO.position.set(-3,1.6,-2.5);scene.add(rimO);
+  var rimV=new THREE.PointLight(0xa6dcc4,0.4,12);rimV.position.set(3,2.4,-3);scene.add(rimV);
+
+  // floor: soft shadow + ember glow ring
+  var floor=new THREE.Mesh(new THREE.PlaneGeometry(14,14),new THREE.ShadowMaterial({opacity:0.14}));
+  floor.rotation.x=-Math.PI/2;floor.receiveShadow=true;scene.add(floor);
+  var c=document.createElement('canvas');c.width=c.height=256;var g=c.getContext('2d');
+  var gr=g.createRadialGradient(128,128,10,128,128,128);gr.addColorStop(0,'rgba(255,160,90,.28)');gr.addColorStop(.55,'rgba(255,200,140,.08)');gr.addColorStop(1,'rgba(255,200,140,0)');
+  g.fillStyle=gr;g.fillRect(0,0,256,256);
+  var glow=new THREE.Mesh(new THREE.CircleGeometry(2.1,48),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));
+  glow.rotation.x=-Math.PI/2;glow.position.y=0.01;scene.add(glow);
+
+  // placeholder hero (replaced by the dropped GLB)
+  var hero=new THREE.Group();scene.add(hero);
+  (function(){
+    function M(c,r){return new THREE.MeshStandardMaterial({color:c,roughness:r||.6,flatShading:true});}
+    function add(geo,mat,x,y,z,rx,rz){var m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);if(rx)m.rotation.x=rx;if(rz)m.rotation.z=rz;m.castShadow=true;hero.add(m);return m;}
+    var cloth=M(0x6a3df0),skin=M(0xffc9a3),gold=M(0xffb13d,.35),dark=M(0x2a1b52);
+    add(new THREE.CylinderGeometry(.15,.13,.8,10),dark,-.18,.4,0);add(new THREE.CylinderGeometry(.15,.13,.8,10),dark,.18,.4,0);
+    add(new THREE.CylinderGeometry(.27,.34,.85,10),cloth,0,1.2,0);
+    add(new THREE.CylinderGeometry(.36,.36,.12,10),gold,0,.86,0);
+    add(new THREE.CylinderGeometry(.09,.09,.7,8),cloth,-.42,1.2,0,0,.2);add(new THREE.CylinderGeometry(.09,.09,.7,8),cloth,.42,1.2,0,0,-.2);
+    add(new THREE.SphereGeometry(.3,16,12),skin,0,1.85,0);
+    add(new THREE.ConeGeometry(.36,.62,10),cloth,0,2.28,0);
+    add(new THREE.BoxGeometry(.7,.95,.06),M(0xff7a3d),0,1.15,-.28,.1);
+    add(new THREE.CylinderGeometry(.03,.03,1.9,6),gold,.62,.95,.1);
+    add(new THREE.SphereGeometry(.1,10,8),M(0x6be0aa,.2),.62,1.95,.1);
+  })();
+
+  var HEIGHT=2.3;
+  function fitModel(obj){
+    obj.traverse(function(o){if(o.isMesh){o.castShadow=true;o.frustumCulled=false;}});
+    var b=new THREE.Box3().setFromObject(obj),s=b.getSize(new THREE.Vector3()),k=HEIGHT/s.y;
+    obj.scale.multiplyScalar(k);b.setFromObject(obj);var ctr=b.getCenter(new THREE.Vector3());
+    obj.position.x-=ctr.x;obj.position.z-=ctr.z;obj.position.y-=b.min.y;
+  }
+  function loadBuffer(buf){
+    new THREE.GLTFLoader().parse(buf,'',function(gltf){
+      scene.remove(hero);hero=new THREE.Group();hero.add(gltf.scene);fitModel(gltf.scene);scene.add(hero);
+      document.getElementById('drop').firstChild.nodeValue='Модель загружена. Перетащите другой .glb, чтобы заменить';
+    },function(){alert('Не удалось прочитать файл. Нужен .glb со встроенными текстурами.');});
+  }
+  function readFile(file){if(!file)return;var r=new FileReader();r.onload=function(){loadBuffer(r.result);};r.readAsArrayBuffer(file);}
+  document.getElementById('file').addEventListener('change',function(e){readFile(e.target.files[0]);});
+  window.addEventListener('dragover',function(e){e.preventDefault();});
+  window.addEventListener('drop',function(e){e.preventDefault();readFile(e.dataTransfer.files[0]);});
+
+  // character looks at the pointer; when the pointer is still, it slowly turns left and right
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var px=0,hasPtr=false,lastMove=-1e9,yaw=0,tmp=new THREE.Vector3();
+  window.addEventListener('pointermove',function(e){px=e.clientX;hasPtr=true;lastMove=performance.now();});
+  document.documentElement.addEventListener('mouseleave',function(){lastMove=-1e9;});
+  function resize(){var w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;renderer.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();}
+  addEventListener('resize',resize);if(window.ResizeObserver)new ResizeObserver(resize).observe(stage);resize();
+  cam.position.set(0,1.5,6.4);cam.lookAt(0,1.15,0);cam.updateMatrixWorld();
+  (function loop(){
+    var now=performance.now(),t=now/1000,target;
+    if(hasPtr&&now-lastMove<2000){
+      var r=renderer.domElement.getBoundingClientRect();
+      tmp.set(0,1.2,0).project(cam);
+      var cx=r.left+(tmp.x*0.5+0.5)*r.width;
+      target=Math.max(-1,Math.min(1,(px-cx)/(innerWidth*0.35)))*1.05;
+    }else target=reduce?0:Math.sin(t*0.9)*0.3;
+    yaw+=(target-yaw)*0.08;
+    hero.rotation.y=yaw;
+    renderer.render(scene,cam);requestAnimationFrame(loop);
+  })();
+  // embedded character (decimated GLB)
+  fetch('assets/hero.glb').then(function(r){return r.arrayBuffer();}).then(loadBuffer).catch(function(){});
+})();
+</script>
+</body>
+</html>
