@@ -15,13 +15,12 @@ html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;min-height:100vh;background:var(--q-primary-50);color:var(--q-ink);font:400 17px/1.55 var(--q-font);overflow-x:hidden}
 .top{height:var(--hh);display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 max(5vw,28px)}
 .logo{display:flex;align-items:center;gap:10px;font:700 22px var(--q-font);letter-spacing:-.02em;color:var(--q-ink);text-decoration:none}
-.mark{width:30px;height:30px;border-radius:10px;background:var(--q-primary-600);display:grid;place-items:center}
-.mark:after{content:"";width:10px;height:10px;border-radius:3px;background:#fff;transform:rotate(45deg)}
+.mark{width:38px;height:38px;display:block}
 .nav{display:flex;gap:32px;margin-left:auto}
 .nav a{color:var(--q-neutral-ink);text-decoration:none;font:500 15px var(--q-font);transition:color .15s}
 .nav a:hover{color:var(--q-primary-600)}
-.cta{height:40px;padding:0 18px;display:inline-flex;align-items:center;border-radius:13px;background:var(--q-primary-100);color:var(--q-primary-700);font:600 15px var(--q-font);text-decoration:none;transition:background .15s}
-.cta:hover{background:var(--q-primary-300)}
+.cta{height:40px;padding:0 18px;display:inline-flex;align-items:center;border-radius:13px;background:var(--q-primary-600);color:#fff;font:600 15px var(--q-font);text-decoration:none;transition:background .15s;box-shadow:var(--q-shadow-now)}
+.cta:hover{background:var(--q-primary-700)}
 .cta:focus-visible,.nav a:focus-visible,.logo:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3px;border-radius:8px}
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:stretch;min-height:calc(100vh - var(--hh))}
 .copy{align-self:center;padding:30px 3vw 60px max(5vw,28px)}
@@ -39,26 +38,91 @@ button.go:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3p
 .perks{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:8px;color:var(--q-neutral-ink);font-size:15px}
 .perks li{padding-left:22px;position:relative}
 .perks li:before{content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;border-radius:3px;background:var(--q-primary-600);transform:rotate(45deg)}
-.stage{position:relative;min-height:560px;border-radius:28px 0 0 28px;overflow:hidden;background:#7fb6ee url(assets/bg.jpg) center/cover no-repeat}
+.stage{position:relative;min-height:560px;border-radius:28px 0 0 28px;overflow:hidden;background:#7fb6ee var(--hero-img) center/cover no-repeat}
 .stage canvas{position:absolute;inset:0;display:block;width:100%;height:100%;touch-action:pan-y}
 .drop{position:absolute;z-index:2;right:20px;bottom:20px;font:500 13px var(--q-font);color:var(--q-neutral-ink);background:#ffffffd9;border:1px dashed var(--q-neutral-line);border-radius:12px;padding:9px 14px;cursor:pointer}
 .drop:hover{border-color:var(--q-primary-600);color:var(--q-ink)}
 .drop input{display:none}
 @media (max-width:900px){.nav{display:none}.hero{grid-template-columns:1fr}.stage{height:70vh;min-height:420px;border-radius:28px}}
 @media (prefers-reduced-motion:reduce){button.go,.cta,.nav a{transition:none}}
+
+html{scroll-behavior:smooth}
+.bubble{position:absolute;z-index:3;left:54%;top:9%;padding:12px 20px;background:#fff;border-radius:20px 20px 20px 6px;font:600 22px var(--q-font);box-shadow:var(--q-shadow-now);opacity:0;transform:translateY(8px) scale(.9);transform-origin:0 100%;transition:opacity .3s,transform .3s;pointer-events:none}
+.bubble.show{opacity:1;transform:none}
+.sec{padding:96px max(5vw,28px);scroll-margin-top:var(--hh)}
+.wrap{max-width:1180px;margin:0 auto}
+h2{font:700 clamp(30px,4vw,52px)/1.08 var(--q-font);letter-spacing:-.025em;margin:0 0 16px}
+.sec>.wrap>.lead2{color:var(--q-neutral-ink);font-size:19px;max-width:34em;margin:0 0 64px}
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:72px}
+.feat:nth-child(even) .ft{order:2}
+.ft h3{font:700 clamp(26px,3vw,38px)/1.12 var(--q-font);letter-spacing:-.02em;margin:0 0 14px}
+.ft p{color:var(--q-neutral-ink);font-size:18px;margin:0;max-width:26em}
+.fv{background:var(--q-primary-100);border-radius:28px;padding:40px;display:grid;place-items:center}
+.phone{width:240px;background:#fff;border-radius:34px;padding:22px 16px 18px;box-shadow:0 18px 40px rgba(60,20,160,.25);border:6px solid var(--q-ink);display:grid;gap:8px}
+.phone b{font:700 17px var(--q-font);margin:0 4px 6px}
+.pr{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--q-primary-50);font:500 14px var(--q-font);color:var(--q-ink)}
+.pr:before{content:"";flex:none;width:16px;height:16px;border-radius:50%;border:2px solid var(--q-primary-300)}
+.pr.x{color:#8c88a8;text-decoration:line-through}.pr.x:before{background:var(--q-primary-600);border-color:var(--q-primary-600)}
+.pr.ai{background:#fff;border:1.5px dashed var(--q-primary-300)}.pr.ai:before{content:"✦";width:auto;height:auto;border:0;color:var(--q-primary-600);font-size:15px}
+.pr.n:before{display:none}
+.bar{height:10px;border-radius:99px;background:var(--q-primary-100);margin:4px 4px 0}.bar i{display:block;height:100%;border-radius:inherit;background:#ff8a3d}
+.inv{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.inv i{aspect-ratio:1;border-radius:12px;background:var(--q-primary-50);border:1.5px solid var(--q-primary-100)}.inv i.on{background:var(--q-primary-300)}.inv i.hot{background:#ff8a3d}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{background:#fff;border:1.5px solid var(--q-neutral-line);border-radius:22px;padding:28px}
+.step span{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--q-primary-600);color:#fff;font:700 18px var(--q-font);margin-bottom:18px}
+.step h3{font:700 22px/1.2 var(--q-font);margin:0 0 8px}.step p{margin:0;color:var(--q-neutral-ink)}
+details{border-bottom:1.5px solid var(--q-neutral-line);padding:20px 0}
+summary{cursor:pointer;font:600 19px var(--q-font);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}summary:after{content:"+";color:var(--q-primary-600);font-size:24px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin:12px 0 0;color:var(--q-neutral-ink);max-width:44em}
+.final{background:var(--q-primary-100);border-radius:28px;padding:64px 32px;text-align:center}
+.final form{margin:28px auto 0;justify-content:center}.final .msg{text-align:center}
+.foot{display:flex;justify-content:space-between;align-items:center;padding:32px max(5vw,28px);color:var(--q-neutral-ink);font-size:14px}
+@media (max-width:900px){.feat{grid-template-columns:1fr;gap:28px}.feat:nth-child(even) .ft{order:0}.steps{grid-template-columns:1fr}.sec{padding:64px 24px}.bubble{left:30%;top:6%}}
+
+.ic{display:grid;place-items:center;width:56px;height:56px;border-radius:16px;background:var(--q-primary-600);color:#fff;margin-bottom:20px}.ic.r{background:#ff8a3d}
+.ic svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cmp{display:grid;grid-template-columns:.7fr 1fr 1.25fr;border-radius:28px;overflow:hidden;border:1.5px solid var(--q-neutral-line);background:#fff}
+.cmp>div{padding:20px 24px;border-top:1.5px solid var(--q-neutral-line);font:500 16px/1.4 var(--q-font)}
+.cmp>.h{border-top:0;font:700 18px var(--q-font)}.cmp>.h.q{background:var(--q-primary-600);color:#fff}
+.cmp>.l{font-weight:600}.cmp>.q{background:var(--q-primary-50)}
+.cmp>.s{color:#6a6684}.cmp>.s:before{content:"–";margin-right:10px;color:#8c88a8}
+.cmp>.q:not(.h):before{content:"✓";margin-right:10px;color:var(--q-primary-600);font-weight:700}
+@media (max-width:900px){.cmp{grid-template-columns:1fr}.cmp>.h{display:none}.cmp>.l{background:var(--q-primary-100);border-top-width:0}.cmp>.s:before{content:"Простой: ";font-weight:600;margin:0}.cmp>.q:not(.h):before{content:"Questika: ";margin:0}}
+
+html{cursor:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMicgaGVpZ2h0PSczMicgdmlld0JveD0nMCAwIDMyIDMyJz48ZyB0cmFuc2Zvcm09J3JvdGF0ZSgtNDUgMTYgMTYpJyBzdHJva2U9JyMxYjE3MzAnIHN0cm9rZS13aWR0aD0nMScgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PHBvbHlnb24gcG9pbnRzPScxNiwyIDE4LjUsNiAxOC41LDE5IDEzLjUsMTkgMTMuNSw2JyBmaWxsPScjZTllN2Y3Jy8+PGxpbmUgeDE9JzE2JyB5MT0nNScgeDI9JzE2JyB5Mj0nMTgnIHN0cm9rZT0nI2I5YTJmZicvPjxyZWN0IHg9JzknIHk9JzE5JyB3aWR0aD0nMTQnIGhlaWdodD0nMycgcng9JzEuNScgZmlsbD0nI2ZmYjEzZCcvPjxyZWN0IHg9JzE0LjUnIHk9JzIyJyB3aWR0aD0nMycgaGVpZ2h0PSc1JyBmaWxsPScjN2M0ZGZmJy8+PGNpcmNsZSBjeD0nMTYnIGN5PScyOC41JyByPScyJyBmaWxsPScjZmZiMTNkJy8+PC9nPjwvc3ZnPg==) 6 6,auto}
+a,button,summary,.cta,.go{cursor:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMicgaGVpZ2h0PSczMicgdmlld0JveD0nMCAwIDMyIDMyJz48ZyB0cmFuc2Zvcm09J3JvdGF0ZSgtNDUgMTYgMTYpJyBzdHJva2U9JyMxYjE3MzAnIHN0cm9rZS13aWR0aD0nMScgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCc+PHBvbHlnb24gcG9pbnRzPScxNiwyIDE4LjUsNiAxOC41LDE5IDEzLjUsMTkgMTMuNSw2JyBmaWxsPScjZTllN2Y3Jy8+PGxpbmUgeDE9JzE2JyB5MT0nNScgeDI9JzE2JyB5Mj0nMTgnIHN0cm9rZT0nI2I5YTJmZicvPjxyZWN0IHg9JzknIHk9JzE5JyB3aWR0aD0nMTQnIGhlaWdodD0nMycgcng9JzEuNScgZmlsbD0nI2ZmYjEzZCcvPjxyZWN0IHg9JzE0LjUnIHk9JzIyJyB3aWR0aD0nMycgaGVpZ2h0PSc1JyBmaWxsPScjN2M0ZGZmJy8+PGNpcmNsZSBjeD0nMTYnIGN5PScyOC41JyByPScyJyBmaWxsPScjZmZiMTNkJy8+PC9nPjwvc3ZnPg==) 6 6,pointer}
+input{cursor:text}
+:root{--hero-img:url(assets/bg.jpg)}
+a,button,summary,.cta,.go,.mus{cursor:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMicgaGVpZ2h0PSczMicgdmlld0JveD0nMCAwIDMyIDMyJz48cGF0aCBkPSdNNyAxNyBMMTMuNSAyMy41IEwyNSA5JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYjE3MzAnIHN0cm9rZS13aWR0aD0nNycgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJy8+PHBhdGggZD0nTTcgMTcgTDEzLjUgMjMuNSBMMjUgOScgZmlsbD0nbm9uZScgc3Ryb2tlPScjMmVjYzcxJyBzdHJva2Utd2lkdGg9JzQnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcvPjwvc3ZnPg==) 16 16,pointer}
+.mus{position:fixed;z-index:50;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));width:52px;height:52px;border:1.5px solid var(--q-neutral-line);border-radius:16px;background:#fff;color:var(--q-primary-700);display:grid;place-items:center;box-shadow:0 8px 22px rgba(60,20,160,.25);transition:background .15s,color .15s}
+.mus svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mus .on-i{display:none}.mus.on .on-i{display:block}.mus.on .off-i{display:none}
+.mus.on{background:var(--q-primary-600);border-color:var(--q-primary-600);color:#fff}
+.mus:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3px}
+.shot{aspect-ratio:4/5;border-radius:18px;background:var(--hero-img) var(--pos,50%) center/cover no-repeat;margin-bottom:22px}
+.step{padding:14px 14px 28px}.step h3,.step p{padding:0 12px}
+
+:is(a,button,summary,label,[role=button],.cta,.go,.mus),:is(a,button,summary,label,[role=button]) *{cursor:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPSczMicgaGVpZ2h0PSczMicgdmlld0JveD0nMCAwIDMyIDMyJz48cGF0aCBkPSdNNyAxNyBMMTMuNSAyMy41IEwyNSA5JyBmaWxsPSdub25lJyBzdHJva2U9JyMxYjE3MzAnIHN0cm9rZS13aWR0aD0nNycgc3Ryb2tlLWxpbmVjYXA9J3JvdW5kJyBzdHJva2UtbGluZWpvaW49J3JvdW5kJy8+PHBhdGggZD0nTTcgMTcgTDEzLjUgMjMuNSBMMjUgOScgZmlsbD0nbm9uZScgc3Ryb2tlPScjMmVjYzcxJyBzdHJva2Utd2lkdGg9JzQnIHN0cm9rZS1saW5lY2FwPSdyb3VuZCcgc3Ryb2tlLWxpbmVqb2luPSdyb3VuZCcvPjwvc3ZnPg==) 16 16,pointer !important}
+input[type=email]{cursor:text !important}
+:root{--char:url(assets/char.png)}
+#how .wrap{max-width:none}
+.shot{position:relative;overflow:hidden}
+.shot:after{content:"";position:absolute;left:0;right:0;bottom:4%;height:80%;background:var(--char) center bottom/contain no-repeat;filter:drop-shadow(0 8px 6px rgba(20,10,60,.3))}
 </style>
 </head>
 <body>
 <header class="top">
-  <a class="logo" href="#"><span class="mark"></span>Questika</a>
-  <nav class="nav" aria-label="Разделы"><a href="#">Возможности</a><a href="#">Квесты и миссии</a><a href="#">Команда</a></nav>
+  <a class="logo" href="#"><img class="mark" alt="" src="assets/logo.png">Questika</a>
+  <nav class="nav" aria-label="Разделы"><a href="#how">Как это работает</a><a href="#compare">Сравнение</a><a href="#features">Возможности</a><a href="#faq">Вопросы</a></nav>
   <a class="cta" href="#em">Регистрация на Beta</a>
 </header>
 <main class="hero">
   <section class="copy">
     <h1>Questika</h1>
     <p class="lead">Questika — таск-менеджер, где задачи становятся квестами, а прогресс — наградами. Выполняй цели, побеждай боссов и расти вместе с командой.</p>
-    <form id="f" novalidate>
+    <form id="f" class="beta" novalidate>
       <input id="em" type="email" placeholder="Ваш email" autocomplete="email" aria-label="Email" required>
       <button class="go" type="submit">Регистрация на Beta</button>
     </form>
@@ -70,24 +134,65 @@ button.go:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3p
     </ul>
   </section>
   <section class="stage" id="stage" aria-label="3D-персонаж Questika">
-    <label class="drop" id="drop">Перетащите .glb сюда, чтобы примерить своего персонажа<input id="file" type="file" accept=".glb,.gltf"></label>
+    <div class="bubble" id="bubble">Привет!</div>
   </section>
 </main>
+<section class="sec" id="how" style="background:var(--q-primary-100)"><div class="wrap">
+  <h2>Как это работает</h2>
+  <p class="lead2">Три шага от списка дел до победы над боссом.</p>
+  <div class="steps">
+    <div class="step"><div class="shot" style="--pos:8%" aria-hidden="true"></div><h3>Прокачивай персонажа</h3><p>Каждая выполненная задача даёт очки. Собирай экипировку и питомцев и улучшай своего героя.</p></div>
+    <div class="step"><div class="shot" style="--pos:50%" aria-hidden="true"></div><h3>Завершай свои цели</h3><p>Цель становится квестом: разбей её на задачи, иди по шагам и доводи дело до конца.</p></div>
+    <div class="step"><div class="shot" style="--pos:92%" aria-hidden="true"></div><h3>Получай награды</h3><p>Награды за прогресс, миссии с боссами и боевой пропуск. Лиги и рейтинг добавляют азарта.</p></div>
+  </div>
+</div></section>
+<section class="sec" id="compare"><div class="wrap">
+  <h2>Простой таск-менеджер и Questika</h2>
+  <p class="lead2">Обычный список напоминает, что нужно сделать. Questika помогает дойти до результата.</p>
+  <div class="cmp">
+    <div class="h"></div><div class="h">Простой таск-менеджер</div><div class="h q">Questika</div>
+    <div class="l">Планирование</div><div class="s">Список задач по датам</div><div class="q">Умный таймлайн на сегодня и подсказки, что успеть в свободное окно</div>
+    <div class="l">Цели</div><div class="s">Проекты и папки</div><div class="q">Квесты: цель из нескольких задач с наглядным прогрессом</div>
+    <div class="l">Мотивация</div><div class="s">Галочка рядом с задачей</div><div class="q">Очки, экипировка, питомцы и награды за прогресс</div>
+    <div class="l">Азарт</div><div class="s">Только дедлайны</div><div class="q">Миссии с боссами и боевой пропуск</div>
+    <div class="l">Команда</div><div class="s">Общие списки</div><div class="q">Лиги, лидерборд и чат команды</div>
+    <div class="l">Создание задач</div><div class="s">Вручную</div><div class="q">AI создаёт задачи, делит на подзадачи и предлагает сроки</div>
+  </div>
+</div></section>
+<section class="sec" id="features"><div class="wrap">
+  <h2>Всё, чтобы довести дела до конца</h2>
+  <p class="lead2">Планировщик, квесты и игра в одном мобильном приложении: задачи перестают быть списком, который страшно открывать.</p>
+  <div id="feats"></div>
+</div></section>
+<section class="sec" id="faq"><div class="wrap" style="max-width:820px">
+  <h2>Частые вопросы</h2>
+  <details><summary>Что такое Questika?</summary><p>Мобильное приложение: таск-менеджер с элементами игры. Задачи собираются в квесты, за выполнение вы получаете очки, экипировку и питомцев.</p></details>
+  <details><summary>Чем это отличается от обычного таск-менеджера?</summary><p>В основе обычный планировщик с календарём и умным таймлайном на сегодня. Сверху игровой слой: герой, квесты, миссии с боссами, лиги и командный рейтинг.</p></details>
+  <details><summary>Что такое квесты и миссии?</summary><p>Квест — это ваша цель, которая состоит из нескольких задач. Миссии — игровые испытания с боссами.</p></details>
+  <details><summary>Как стать бета-тестером?</summary><p>Оставьте email в форме на этой странице. Когда откроем доступ, мы напишем вам.</p></details>
+</div></section>
+<section class="sec" style="padding-top:0"><div class="wrap"><div class="final">
+  <h2>Станьте одним из первых бета-тестеров</h2>
+  <form class="beta" novalidate><input type="email" placeholder="Ваш email" autocomplete="email" aria-label="Email" required><button class="go" type="submit">Регистрация на Beta</button></form>
+  <p class="msg"></p>
+</div></div></section>
+<footer class="foot"><a class="logo" href="#"><img class="mark" alt="" src="assets/logo.png">Questika</a><span>© 2026 Questika</span></footer>
+<button class="mus" id="music" type="button" aria-pressed="false" aria-label="Включить музыку" title="Музыка"><svg class="on-i" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg><svg class="off-i" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg></button>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 <script>
 (function(){
-  // ---------- form ----------
-  var f=document.getElementById('f'),em=document.getElementById('em'),msg=document.getElementById('msg');
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    var v=em.value.trim();
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){msg.className='msg err';msg.textContent='Проверьте email: похоже, в адресе есть ошибка.';em.focus();return;}
-    msg.className='msg ok';msg.textContent='Вы в списке бета-тестеров. Напишем на '+v+'.';
-    f.querySelector('button').textContent='Записали';em.disabled=true;
+  // ---------- forms ----------
+  var em=document.getElementById('em');
+  document.querySelectorAll('form.beta').forEach(function(f){
+    var inp=f.querySelector('input'),msg=f.nextElementSibling,btn=f.querySelector('button');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();var v=inp.value.trim();
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)){msg.className='msg err';msg.textContent='Проверьте email: похоже, в адресе есть ошибка.';inp.focus();return;}
+      msg.className='msg ok';msg.textContent='Вы в списке бета-тестеров. Напишем на '+v+'.';btn.textContent='Записали';inp.disabled=true;
+    });
   });
-
   document.querySelector('.cta').addEventListener('click',function(e){e.preventDefault();em.scrollIntoView({block:'center',behavior:'smooth'});em.focus({preventScroll:true});});
   // ---------- 3D stage ----------
   var stage=document.getElementById('stage'),renderer;
@@ -118,22 +223,7 @@ button.go:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3p
   var glow=new THREE.Mesh(new THREE.CircleGeometry(2.1,48),new THREE.MeshBasicMaterial({map:new THREE.CanvasTexture(c),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));
   glow.rotation.x=-Math.PI/2;glow.position.y=0.01;scene.add(glow);
 
-  // placeholder hero (replaced by the dropped GLB)
   var hero=new THREE.Group();scene.add(hero);
-  (function(){
-    function M(c,r){return new THREE.MeshStandardMaterial({color:c,roughness:r||.6,flatShading:true});}
-    function add(geo,mat,x,y,z,rx,rz){var m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);if(rx)m.rotation.x=rx;if(rz)m.rotation.z=rz;m.castShadow=true;hero.add(m);return m;}
-    var cloth=M(0x6a3df0),skin=M(0xffc9a3),gold=M(0xffb13d,.35),dark=M(0x2a1b52);
-    add(new THREE.CylinderGeometry(.15,.13,.8,10),dark,-.18,.4,0);add(new THREE.CylinderGeometry(.15,.13,.8,10),dark,.18,.4,0);
-    add(new THREE.CylinderGeometry(.27,.34,.85,10),cloth,0,1.2,0);
-    add(new THREE.CylinderGeometry(.36,.36,.12,10),gold,0,.86,0);
-    add(new THREE.CylinderGeometry(.09,.09,.7,8),cloth,-.42,1.2,0,0,.2);add(new THREE.CylinderGeometry(.09,.09,.7,8),cloth,.42,1.2,0,0,-.2);
-    add(new THREE.SphereGeometry(.3,16,12),skin,0,1.85,0);
-    add(new THREE.ConeGeometry(.36,.62,10),cloth,0,2.28,0);
-    add(new THREE.BoxGeometry(.7,.95,.06),M(0xff7a3d),0,1.15,-.28,.1);
-    add(new THREE.CylinderGeometry(.03,.03,1.9,6),gold,.62,.95,.1);
-    add(new THREE.SphereGeometry(.1,10,8),M(0x6be0aa,.2),.62,1.95,.1);
-  })();
 
   var HEIGHT=2.3;
   function fitModel(obj){
@@ -145,11 +235,13 @@ button.go:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3p
   function loadBuffer(buf){
     new THREE.GLTFLoader().parse(buf,'',function(gltf){
       scene.remove(hero);hero=new THREE.Group();hero.add(gltf.scene);fitModel(gltf.scene);scene.add(hero);
-      document.getElementById('drop').firstChild.nodeValue='Модель загружена. Перетащите другой .glb, чтобы заменить';
+      mixer=null;hello0=performance.now();
+      if(gltf.animations&&gltf.animations.length){var clip=null;gltf.animations.forEach(function(c){if(/wave|hello|greet|привет/i.test(c.name))clip=clip||c;});
+        if(clip){mixer=new THREE.AnimationMixer(gltf.scene);var ac=mixer.clipAction(clip);ac.setLoop(THREE.LoopOnce,1);ac.play();}}
+      var bb=document.getElementById('bubble');bb.classList.add('show');setTimeout(function(){bb.classList.remove('show');},4800);
     },function(){alert('Не удалось прочитать файл. Нужен .glb со встроенными текстурами.');});
   }
   function readFile(file){if(!file)return;var r=new FileReader();r.onload=function(){loadBuffer(r.result);};r.readAsArrayBuffer(file);}
-  document.getElementById('file').addEventListener('change',function(e){readFile(e.target.files[0]);});
   window.addEventListener('dragover',function(e){e.preventDefault();});
   window.addEventListener('drop',function(e){e.preventDefault();readFile(e.dataTransfer.files[0]);});
 
@@ -161,6 +253,8 @@ button.go:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3p
   function resize(){var w=stage.clientWidth,h=stage.clientHeight;if(!w||!h)return;renderer.setSize(w,h);cam.aspect=w/h;cam.updateProjectionMatrix();}
   addEventListener('resize',resize);if(window.ResizeObserver)new ResizeObserver(resize).observe(stage);resize();
   cam.position.set(0,1.5,6.4);cam.lookAt(0,1.15,0);cam.updateMatrixWorld();
+  var mixer=null,hello0=-1e9,prev=performance.now();
+  function hop(n){var q=(n-hello0)/1600;return q<0||q>1||mixer?0:Math.abs(Math.sin(q*Math.PI*2))*0.12*(1-q);}
   (function loop(){
     var now=performance.now(),t=now/1000,target;
     if(hasPtr&&now-lastMove<2000){
@@ -170,11 +264,100 @@ button.go:focus-visible{outline:3px solid var(--q-primary-300);outline-offset:3p
       target=Math.max(-1,Math.min(1,(px-cx)/(innerWidth*0.35)))*1.05;
     }else target=reduce?0:Math.sin(t*0.9)*0.3;
     yaw+=(target-yaw)*0.08;
-    hero.rotation.y=yaw;
+    hero.rotation.y=yaw;hero.position.y=hop(now);if(mixer)mixer.update((now-prev)/1000);prev=now;
     renderer.render(scene,cam);requestAnimationFrame(loop);
   })();
   // embedded character (decimated GLB)
-  fetch('assets/hero.glb').then(function(r){return r.arrayBuffer();}).then(loadBuffer).catch(function(){});
+    fetch('assets/hero.glb').then(function(r){return r.arrayBuffer();}).then(loadBuffer).catch(function(){});
+})();
+</script>
+
+<script>
+(function(){
+  var F=[
+   ['Весь день на одном экране','Задачи с точным временем или частью дня: утро, день, вечер. В свободные окна Questika добавляет одну мини-задачу, которая помещается по времени.','Сегодня',['x:09:00 Планёрка','11:30 Отчёт для клиента','*:5 минут: ответить на письмо','Вечер: тренировка']],
+   ['Цели становятся квестами','Квест — это цель из нескольких задач. Закрывай задачи, двигайся по квесту и получай награды. Миссии с боссами добавляют азарта.','Квест: выучить Figma',['x:Auto Layout','x:Компоненты','Прототип','Адаптив','%:60']],
+   ['Герой растёт вместе с тобой','Очки за выполненные задачи, экипировка и питомцы. Собирай коллекцию и меняй образ героя в инвентаре.','Инвентарь',['#:']],
+   ['Дела вместе, соревнования по-дружески','Лидерборд по очкам, лиги и общий чат команды: видно, кто сколько задач закрыл за неделю.','Команда',['1. Аня · 1280','2. Макс · 1150','3. Ты · 980']],
+   ['Скажи, что нужно сделать','AI-ассистент создаёт задачи, разбивает их на подзадачи и предлагает сроки.','AI-ассистент',['*:Подготовить релиз к пятнице','x:Собрать список изменений','Написать заметки к релизу','Отправить команде']]
+  ];
+  function row(s){
+    if(s==='#:')return '<div class="inv">'+[1,0,1,0,2,0,0,1,0].map(function(v){return '<i class="'+(v==1?'on':v==2?'hot':'')+'"></i>';}).join('')+'</div>';
+    if(s.indexOf('%:')===0)return '<div class="bar"><i style="width:'+s.slice(2)+'%"></i></div>';
+    if(s.indexOf('x:')===0)return '<div class="pr x">'+s.slice(2)+'</div>';
+    if(s.indexOf('*:')===0)return '<div class="pr ai">'+s.slice(2)+'</div>';
+    return '<div class="pr'+(/^\d\./.test(s)?' n':'')+'">'+s+'</div>';
+  }
+  document.getElementById('feats').innerHTML=F.map(function(f){
+    return '<div class="feat"><div class="ft"><h3>'+f[0]+'</h3><p>'+f[1]+'</p></div><div class="fv"><div class="phone" aria-hidden="true"><b>'+f[2]+'</b>'+f[3].map(row).join('')+'</div></div></div>';
+  }).join('');
+})();
+</script>
+
+<script>
+// generative fantasy ambient (Web Audio): pads, bass and harp-like plucks, no audio files
+(function(){
+  var btn=document.getElementById('music'),ctx,master,wet,dly,timer,on=false,beat=0.86,next=0,s=0;
+  var PROG=[[57,60,64],[53,57,60],[48,52,55],[55,59,62]],SC=[0,2,3,5,7,8,10];
+  function f(m){return 440*Math.pow(2,(m-69)/12);}
+  function ir(){var n=ctx.sampleRate*3.2,b=ctx.createBuffer(2,n,ctx.sampleRate);for(var c=0;c<2;c++){var d=b.getChannelData(c);for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2.6);}return b;}
+  function init(){
+    ctx=new (window.AudioContext||window.webkitAudioContext)();
+    master=ctx.createGain();master.gain.value=0;master.connect(ctx.destination);
+    var rv=ctx.createConvolver();rv.buffer=ir();wet=ctx.createGain();wet.gain.value=0.7;wet.connect(rv);rv.connect(master);
+    dly=ctx.createDelay(1);dly.delayTime.value=beat*0.75;var fb=ctx.createGain();fb.gain.value=0.32;dly.connect(fb);fb.connect(dly);dly.connect(wet);
+  }
+  function pad(m,t,len){
+    [-6,6].forEach(function(dt){
+      var o=ctx.createOscillator(),lp=ctx.createBiquadFilter(),g=ctx.createGain();
+      o.type='sawtooth';o.frequency.value=f(m);o.detune.value=dt;lp.type='lowpass';lp.frequency.value=800;
+      g.gain.setValueAtTime(0.0001,t);g.gain.linearRampToValueAtTime(0.03,t+2);g.gain.setValueAtTime(0.03,t+len);g.gain.linearRampToValueAtTime(0.0001,t+len+2.5);
+      o.connect(lp);lp.connect(g);g.connect(master);g.connect(wet);o.start(t);o.stop(t+len+2.6);
+    });
+  }
+  function bass(m,t,len){
+    var o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=f(m);
+    g.gain.setValueAtTime(0.0001,t);g.gain.linearRampToValueAtTime(0.14,t+1);g.gain.setValueAtTime(0.14,t+len);g.gain.linearRampToValueAtTime(0.0001,t+len+2);
+    o.connect(g);g.connect(master);o.start(t);o.stop(t+len+2.1);
+  }
+  function pluck(m,t){
+    var o=ctx.createOscillator(),o2=ctx.createOscillator(),g=ctx.createGain(),g2=ctx.createGain();
+    o.type='triangle';o.frequency.value=f(m);o2.type='sine';o2.frequency.value=f(m+12);g2.gain.value=0.35;
+    g.gain.setValueAtTime(0.0001,t);g.gain.linearRampToValueAtTime(0.16,t+0.015);g.gain.exponentialRampToValueAtTime(0.0008,t+2.4);
+    o2.connect(g2);g2.connect(g);o.connect(g);g.connect(master);g.connect(wet);g.connect(dly);
+    o.start(t);o2.start(t);o.stop(t+2.5);o2.stop(t+2.5);
+  }
+  function sched(){
+    while(next<ctx.currentTime+1.2){
+      var ch=PROG[Math.floor(s/16)%4],st=s%16,len=8*beat;
+      if(st===0){ch.forEach(function(m){pad(m,next,len);});bass(ch[0]-12,next,len);pluck(ch[2]+24,next+0.05);}
+      if(Math.random()<(st%2===0?0.5:0.22)){
+        var m=Math.random()<0.55?ch[Math.floor(Math.random()*3)]+12*(1+Math.floor(Math.random()*2)):57+SC[Math.floor(Math.random()*7)]+12*(1+Math.floor(Math.random()*2));
+        pluck(m,next);
+      }
+      next+=beat/2;s++;
+    }
+  }
+  var wantOn=true,playing=false;
+  function ui(){btn.classList.toggle('on',playing);btn.setAttribute('aria-pressed',playing);btn.setAttribute('aria-label',playing?'Выключить музыку':'Включить музыку');}
+  function play(){
+    wantOn=true;if(!ctx)init();
+    ctx.resume().then(function(){
+      if(!wantOn||playing)return;
+      playing=true;next=ctx.currentTime+0.1;master.gain.setTargetAtTime(0.5,ctx.currentTime,0.8);timer=setInterval(sched,250);ui();
+    });
+  }
+  function stop(){
+    wantOn=false;if(!playing)return;
+    playing=false;clearInterval(timer);master.gain.setTargetAtTime(0,ctx.currentTime,0.5);
+    setTimeout(function(){if(!playing)ctx.suspend();},2500);ui();
+  }
+  btn.addEventListener('click',function(){playing?stop():play();});
+  // browsers block sound before a user gesture: try now, then start on the first click, tap or key press
+  ['pointerdown','keydown','touchstart'].forEach(function(ev){
+    addEventListener(ev,function(e){if(wantOn&&!playing&&!btn.contains(e.target))play();},true);
+  });
+  try{play();}catch(e){}
 })();
 </script>
 </body>
